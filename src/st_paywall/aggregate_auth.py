@@ -32,6 +32,7 @@ def require_auth(
     login_button_color: str = "#FD504D",
     login_sidebar: bool = True,
 ):
+    st.write("require auth")
     user_email = get_logged_in_user_email()
 
     if not user_email:
@@ -68,6 +69,7 @@ def optional_auth(
     login_button_color: str = "#FD504D",
     login_sidebar: bool = True,
 ):
+    st.write("optional auth")
     user_email = get_logged_in_user_email()
     if payment_provider == "stripe":
         is_subscriber = user_email and is_active_subscriber(user_email)

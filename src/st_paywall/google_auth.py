@@ -106,6 +106,8 @@ def get_logged_in_user_email() -> Optional[str]:
 
     try:
         token_from_params = get_access_token_from_query_params(client, redirect_url)
+        st.write("token_from_params")
+        st.write(token_from_params)
     except KeyError:
         return None
 
