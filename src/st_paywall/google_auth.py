@@ -94,6 +94,7 @@ def get_access_token_from_query_params(
 def show_login_button(
     text: Optional[str] = "Login with Google", color="#FD504D", sidebar: bool = True
 ):
+    st.write("show_login_button")
     authorization_url = asyncio.run(
         get_authorization_url(client=client, redirect_url=redirect_url)
     )
@@ -101,13 +102,17 @@ def show_login_button(
 
 
 def get_logged_in_user_email() -> Optional[str]:
+    st.write("get_logged_in_user_email")
     if "email" in st.session_state:
+        st.write("email in st.session_state")
+        st.write(st.session_state.email)
         return st.session_state.email
 
     try:
         token_from_params = get_access_token_from_query_params(client, redirect_url)
         st.write("token_from_params")
         st.write(token_from_params)
+        st.session_state['token'] = token_from_params
     except KeyError:
         return None
 
